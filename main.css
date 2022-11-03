@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-light-grey: #959eac;
+  --color-medium-grey: #7c8798;
+  --color-dark-grey: hsl(207, 19%, 20%);
+  --color-very-dark-grey: #262f38;
+  --color-dark-blue: #252d37;
+  --color-very-dark-blue: #121417;
+  --color-orange: #fb7413;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-very-dark-blue);
+  color: var(--color-light-grey);
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.card {
+  background: var(--color-dark-blue);
+  padding: 2.2rem 2.4rem 3.3rem 2rem;
+  margin: auto 0;
+}
+
+.image-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  padding: 1.3rem;
+  background: var(--color-dark-grey);
+  margin-bottom: 2.3rem;
+}
+
+.image-container img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.feedback-question {
+  color: var(--color-white);
+  font-size: 2.1rem;
+}
+
+.attribution {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
