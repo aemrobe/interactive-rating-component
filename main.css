@@ -6,15 +6,27 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "overpassRegular";
+  src: url(./font-family/static/Overpass-Regular.ttf);
+}
+
+@font-face {
+  font-family: "overpassBold";
+  src: url(./font-family/static/Overpass-Bold.ttf);
+}
+
 :root {
   --color-white: #ffffff;
   --color-light-grey: #959eac;
   --color-medium-grey: #7c8798;
   --color-dark-grey: hsl(207, 19%, 20%);
-  --color-very-dark-grey: #262f38;
+  --color-very-dark-grey: hsl(210, 18%, 22%);
   --color-dark-blue: #252d37;
   --color-very-dark-blue: #121417;
   --color-orange: #fb7413;
+  --font-ff-overpass-regular: "overpassRegular";
+  --font-ff-overpass-bold: "overpassBold";
 }
 
 html {
@@ -26,15 +38,26 @@ body {
   background-color: var(--color-very-dark-blue);
   color: var(--color-light-grey);
   font-size: 1.5rem;
+  font-family: var(--font-ff-overpass-regular);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: end;
+  align-items: center;
 }
 
 .card {
   background: var(--color-dark-blue);
-  padding: 2.2rem 2.4rem 3.3rem 2rem;
+  padding: 2.2rem 2.3rem 3.3rem 2rem;
   margin: auto 0;
+  width: 88%;
+  max-width: 35.8rem;
+  border-radius: 17px;
 }
 
 .image-container {
@@ -53,9 +76,67 @@ body {
   height: 100%;
 }
 
-.feedback-question {
+.feedback-title {
   color: var(--color-white);
-  font-size: 2.1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-text {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-bottom: 3rem;
+}
+
+.number-ratings {
+  margin-bottom: 2.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  height: 4.4rem;
+  width: 4.4rem;
+  padding: 1.7rem;
+  border-radius: 50%;
+  background: var(--color-very-dark-grey);
+  transition: background 0.5s ease, color 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating:hover {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+.click {
+  background: var(--color-medium-grey);
+  color: var(--color-white);
+}
+
+.submit-btn {
+  display: inline-block;
+  border: none;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 40px;
+  background: var(--color-orange);
+  text-transform: uppercase;
+  font-family: var(--font-ff-overpass-bold);
+  color: var(--color-white);
+  letter-spacing: 2px;
+  transition: background 0.8s ease, color 0.8s ease;
+}
+
+.submit-btn:hover {
+  color: var(--color-orange);
+  background: var(--color-white);
+}
+
+footer {
+  margin-top: 1rem;
 }
 
 .attribution {
@@ -65,4 +146,105 @@ body {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+/* thank you card*/
+.thankyou-card {
+  border-radius: 17px;
+  padding: 3.3rem 2.5rem 2rem 2.5rem;
+  background: var(--color-dark-blue);
+  margin: auto 0;
+  width: 88%;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thankyou-img {
+  width: 14.6rem;
+  height: 9.7rem;
+  margin-bottom: 2.2rem;
+}
+
+.rating-message {
+  padding: 1rem 1.4rem;
+  background: var(--color-dark-grey);
+  color: var(--color-orange);
+  border-radius: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 2.8rem;
+}
+
+.feedback-title--big {
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.8px;
+}
+
+.feedback-text--center {
+  text-align: center;
+}
+
+@media (min-width: 1440px) {
+  /*rating card*/
+  .card {
+    max-width: 41.3rem;
+    width: 29%;
+    padding: 3rem 3.9rem 3rem 3.6rem;
+  }
+
+  .image-container {
+    width: 4.6rem;
+    height: 4.6rem;
+    margin-bottom: 3.7rem;
+    padding: 1.5rem;
+  }
+
+  .feedback-text {
+    font-size: 1.5rem;
+  }
+
+  .number-ratings {
+    margin-bottom: 3rem;
+  }
+
+  .rating {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  /*thankyou card*/
+  .thankyou-card {
+    max-width: 41.4rem;
+    width: 29.3%;
+    padding: 4.3rem 4.2rem 5.3rem 3.4rem;
+  }
+
+  .thankyou-img {
+    height: 10.6rem;
+    width: 16.2rem;
+    margin-bottom: 3.9rem;
+  }
+
+  .rating-message {
+    padding: 1.1rem 1.8rem;
+    margin-bottom: 3.7rem;
+  }
+
+  .feedback-title--big {
+    font-size: 2.2rem;
+  }
+
+  .feedback-text--center {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 1.51rem;
+    margin-bottom: 0;
+  }
+}
+
+/*utility class*/
+.hidden {
+  display: none;
 }
