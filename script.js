@@ -31,8 +31,10 @@ for (let i = 0; i < rating.length; i++) {
 submitButton.addEventListener("click", function () {
   for (let i = 0; i < rating.length; i++) {
     if (rating[i].classList.contains("click")) {
+      //removes the rating card
       ratingCard.classList.add("hidden");
       ratingNumber.textContent = i + 1;
+      //display the thankyoucard
       thankyouCard.classList.remove("hidden");
     }
   }

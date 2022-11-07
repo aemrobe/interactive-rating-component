@@ -1,94 +1,108 @@
-# Frontend Mentor - Interactive rating component
+# Frontend Mentor - Interactive rating component solution
 
-![Design preview for the Interactive rating component coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this interactive rating component and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Select and submit a number rating
 - See the "Thank you" card state after submitting a rating
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+A,mobile view of my solution
+![](./screenshot%20of%20my%20solution/mobile-view-interactive-rating-comment-challenge.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+A,desktop view of my solution
+![](./screenshot%20of%20my%20solution/desktop-view-interactive-rating-comment-challenge.png)
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+### Links
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+- Solution URL: [solution URL](https://www.frontendmentor.io/solutions/interactive-rating-comment-using-flexbox-2tIRvU3tJR)
+- Live Site URL: [live site URL](https://aemrobe.github.io/interactive-rating-component/?#)
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+## My process
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### Built with
 
-## Building your project
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+### What I learned
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+in this challenge I have learned that how to add a background on the button which is clicked while keeping the background color of other buttons not displayed.
 
-## Deploying your project
+inorder to make this the code which plays a huge role was this one.
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+```js
+//select elements
+const rating = document.querySelectorAll(".rating");
+//first I have assigned a variable which is called rating for the buttons so when I want to use any javascript code on the buttons I will use the variable. but this variable is like an array since the buttons have the same class which is called .rating inorder to select each buttons we have to specify the index after the name of the variable like an array. forinstance if we want to  select the first button we have to write like this rating[0] (since all array contains an index  which starts with 0 up to the "array lenghth - 1")
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+//function : this function will add the click class on the rating button which is called for at the same time while removing the click class from the rest of the buttons.
+const addRating = function (ratingValue) {
+  //when we use toggle method on the rating button it will remove the class which is specified as an argument ("click" -> argument) if the rating button include the class at the begining or it will add the class which is specified as an argument if rating button doesn't contain it at first place in each function call.
+  rating[ratingValue].classList.toggle("click");
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+  for (let i = 0; i < rating.length; i++) {
+    //this will remove the click class from all the buttons which this function arenot called for. forinstance if this fucntion is called with an argument "0" it will remove the click class from the rating buttons (rating[1],rating[2]...rating[rating.length - 1])
+    if (i !== ratingValue) {
+      rating[i].classList.remove("click");
+    }
+  }
+};
 
-## Create a custom `README.md`
+//function: this functin  calls the addRating function when each button is clicked
+const callingAddRatingFunction = function (ratingValue) {
+  rating[ratingValue].addEventListener("click", function () {
+    addRating(ratingValue);
+  });
+};
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+//exceuting the callingAddRatingFunction with an argument 0 upto the length of the rating array minus one.
+//this will make the callingAddRatingFunction to call the addRating when all the rating button clicked which have an index 0 upto the "rating.length - 1"
+for (let i = 0; i < rating.length; i++) {
+  callingAddRatingFunction(i);
+}
+```
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+### Continued development
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+starting from this challenge I will mainly focus on the challenges which make me to understand how javascript works because now I am studying javascript and I will keep work mainly on the challenge which involve javascript but together with that I will keep reinforcing my css skills too.
 
-## Submitting your solution
+### Useful resources
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+-[the complete javascript course from zero to expert course](https://www.udemy.com/course/the-complete-javascript-course/) -
+I recommend you to see the complete javascript course from zero to expert course by jonas schmedtmann. without his course I couldn't accomplish this challenge because I learned the fundamental of javascript and few lesson of how dom works then by these only two of them I could accomplish it and I will keep learning js from that course now.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+## Author
 
-## Sharing your solution
+-Frontend Mentor - [@aemrobe](https://www.frontendmentor.io/profile/aemrobe)
+-Twitter - [@Aemro112](https://www.twitter.com/Aemro112)
 
-There are multiple places you can share your solution:
+## Acknowledgments
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+I really want to give acknowlege for my teammates who always give me advice when I am stuck on something during the challenge and also for the member of the frontendmentor community.
