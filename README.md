@@ -60,15 +60,23 @@ inorder to make this the code which plays a huge role was this one.
 ```js
 //select elements
 const rating = document.querySelectorAll(".rating");
-//first I have assigned a variable which is called rating for the buttons so when I want to use any javascript code on the buttons I will use the variable. but this variable is like an array since the buttons have the same class which is called .rating inorder to select each buttons we have to specify the index after the name of the variable like an array. forinstance if we want to  select the first button we have to write like this rating[0] (since all array contains an index  which starts with 0 up to the "array lenghth - 1")
+//first I have assigned a variable which is called rating for the buttons so when I want to use any javascript code on the buttons I will use the variable
+but this variable is like an array since the buttons have the same class which is called .rating inorder to select each buttons
+ we have to specify the index after the name of the variable like an array.
+ forinstance if we want to  select the first button we have to write like this rating[0] 
+(since all array contains an index  which starts with 0 up to the "array lenghth - 1")
 
-//function : this function will add the click class on the rating button which is called for at the same time while removing the click class from the rest of the buttons.
+//function : this function will add the click class on the rating button 
+which is called for at the same time while removing the click class from the rest of the buttons.
 const addRating = function (ratingValue) {
-  //when we use toggle method on the rating button it will remove the class which is specified as an argument ("click" -> argument) if the rating button include the class at the begining or it will add the class which is specified as an argument if rating button doesn't contain it at first place in each function call.
+  //when we use toggle method on the rating button it will remove the class
+ which is specified as an argument ("click" -> argument) if the rating button include the class at the begining or it will add
+ the class which is specified as an argument if rating button doesn't contain it at first place in each function call.
   rating[ratingValue].classList.toggle("click");
 
   for (let i = 0; i < rating.length; i++) {
-    //this will remove the click class from all the buttons which this function arenot called for. forinstance if this fucntion is called with an argument "0" it will remove the click class from the rating buttons (rating[1],rating[2]...rating[rating.length - 1])
+    //this will remove the click class from all the buttons which this function arenot called for. 
+forinstance if this fucntion is called with an argument "0" it will remove the click class from the rating buttons (rating[1],rating[2]...rating[rating.length - 1])
     if (i !== ratingValue) {
       rating[i].classList.remove("click");
     }
@@ -83,7 +91,8 @@ const callingAddRatingFunction = function (ratingValue) {
 };
 
 //exceuting the callingAddRatingFunction with an argument 0 upto the length of the rating array minus one.
-//this will make the callingAddRatingFunction to call the addRating when all the rating button clicked which have an index 0 upto the "rating.length - 1"
+//this will make the callingAddRatingFunction to call the addRating 
+when all the rating button clicked which have an index 0 upto the "rating.length - 1"
 for (let i = 0; i < rating.length; i++) {
   callingAddRatingFunction(i);
 }
