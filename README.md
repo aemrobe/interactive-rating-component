@@ -92,7 +92,7 @@ const callingAddRatingFunction = function (ratingValue) {
 
 //exceuting the callingAddRatingFunction with an argument 0 upto the length of the rating array minus one.
 //this will make the callingAddRatingFunction to call the addRating 
-when all the rating button clicked which have an index 0 upto the "rating.length - 1"
+//when all the rating button clicked which have an index 0 upto the "rating.length - 1"
 for (let i = 0; i < rating.length; i++) {
   callingAddRatingFunction(i);
 }
