@@ -15,7 +15,6 @@ const addRating = function (ratingValue) {
   }
 };
 
-//function
 //the rate buttons calling the addRating functions when they are clicked
 const callingAddRatingFunction = function (ratingValue) {
   rating[ratingValue].addEventListener("click", function () {

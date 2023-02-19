@@ -16,8 +16,6 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -64,26 +62,25 @@ const rating = document.querySelectorAll(".rating");
 
 //function : this function will add the click class on the rating button which is called for at the same time while removing the click class from the rest of the buttons.
 const addRating = function (ratingValue) {
-  //when we use toggle method on the rating button it will remove the class which is specified as an argument ("click" -> argument) if the rating button include the class at the begining or it will add the class which is specified as an argument if rating button doesn't contain it at first place in each function call.
+  //the toggle method will remove the class which is specified as an argument ("click" -> the click class in this case) if the rating button contain the class at the begining or it will add the class which is specified as an argument if rating button doesn't contain it at first place in each function call.
   rating[ratingValue].classList.toggle("click");
 
   for (let i = 0; i < rating.length; i++) {
-    //this will remove the click class from all the buttons which this function arenot called for. forinstance if this fucntion is called with an argument "0" it will remove the click class from the rating buttons (rating[1],rating[2]...rating[rating.length - 1])
+    //this will remove the click class from all the buttons which are not clicked. forinstance if we click the first button which means this function will be called with an argument of "0" (which is the index of our first button) it will remove the click class from the rating buttons (rating[1],rating[2]...rating[rating.length - 1])
     if (i !== ratingValue) {
       rating[i].classList.remove("click");
     }
   }
 };
 
-//function: this functin  calls the addRating function when each button is clicked
+//function: this function  calls the addRating function for the button which is clicked
 const callingAddRatingFunction = function (ratingValue) {
   rating[ratingValue].addEventListener("click", function () {
     addRating(ratingValue);
   });
 };
 
-//exceuting the callingAddRatingFunction with an argument 0 upto the length of the rating array minus one.
-//this will make the callingAddRatingFunction to call the addRating when all the rating button clicked which have an index 0 upto the "rating.length - 1"
+//this will attach the addRating eventhandler function for all of the buttons.
 for (let i = 0; i < rating.length; i++) {
   callingAddRatingFunction(i);
 }

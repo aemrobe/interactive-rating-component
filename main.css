@@ -96,18 +96,20 @@ main {
 }
 
 .rating {
-  border: none;
   color: var(--color-light-grey);
   height: 4.4rem;
   width: 4.4rem;
-  padding: 1.7rem;
   margin: 0.5rem;
   border-radius: 50%;
   background: var(--color-very-dark-grey);
   transition: background 0.5s ease, color 0.5s ease;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.rating + input {
+  display: none;
 }
 
 .rating:hover {
