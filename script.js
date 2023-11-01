@@ -27,7 +27,9 @@ for (let i = 0; i < rating.length; i++) {
   callingAddRatingFunction(i);
 }
 
-submitButton.addEventListener("click", function () {
+submitButton.addEventListener("click", function (e) {
+  e.preventDefault();
+
   for (let i = 0; i < rating.length; i++) {
     if (rating[i].classList.contains("click")) {
       //removes the rating card
